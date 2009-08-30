@@ -1,11 +1,20 @@
 = String XOR Ruby Extension
 
-+fast_xor+ is a simple extension which provides a fast in-place String XOR function (suitable for cryptography).
++fast_xor+ is a simple extension which provides fast in-place String XOR functions (suitable for cryptography).
 
 == How do you use it?
 
-  a, b = ...
-  a.xor! b
+  require 'xor'
+
+  # two-argument version
+  a, b = 'a string', 'another string'
+  a.xor!(b)
+  a == "\000N\034\000\032\f\034G"
+
+  # three-argument version
+  a, b, c = 'a string', 'another string', 'yet another string'
+  a.xor!(b, c)
+  a == "y+h {bs3" 
 
 == How fast is "Fast"?
 
