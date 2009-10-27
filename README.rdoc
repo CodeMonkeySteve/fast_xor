@@ -14,11 +14,11 @@
   # three-argument version
   a, b, c = 'a string', 'another string', 'yet another string'
   a.xor!(b, c)
-  a == "y+h {bs3" 
+  a == "y+h {bs3"
 
 == How fast is "Fast"?
 
-On my computer, about 1,000x times faster than pure Ruby (your mileage my vary):
+On my computer, about 1,000x faster than pure Ruby (your mileage my vary):
 
   $ ruby test/benchmark.rb
         user     system      total        real
