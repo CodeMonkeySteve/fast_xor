@@ -1,6 +1,6 @@
 = String XOR Ruby Extension
 
-+fast_xor+ is a simple extension which provides fast in-place String XOR functions (suitable for cryptography).
++fast_xor+ is a simple extension which provides fast in-place String XOR functions, suitable for cryptography.
 
 == How do you use it?
 
@@ -18,16 +18,16 @@
 
 == How fast is "Fast"?
 
-On my computer, about 1,000x faster than pure Ruby (your mileage my vary):
+Almost 50,000x faster than pure Ruby, on my machine (your mileage my vary):
 
-  $ ruby test/benchmark.rb
-        user     system      total        real
-  Ruby:  2.070000   0.930000   3.000000 (  3.004088)
-  C   :  0.010000   0.000000   0.010000 (  0.003045)
+  $ ./benchmark
+              user       system     total      real
+  Ruby     :  6.100000   0.010000   6.110000 (  6.307756)
+  C (x1000):  0.140000   0.000000   0.140000 (  0.144665)
 
 
 Author::    Steve Sloan (mailto:steve@finagle.org)
 Website::   http://github.com/CodeMonkeySteve/fast_xor
-Copyright:: Copyright (c) 2009 Steve Sloan
+Copyright:: Copyright (c) 2009-2010 Steve Sloan
 License::   MIT
 

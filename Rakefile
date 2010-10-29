@@ -1,45 +1,21 @@
+require 'bundler'
+Bundler.setup
+
 require 'rake'
-require 'rake/clean'
 require 'rake/extensiontask'
-require 'rake/testtask'
-require 'jeweler'
+require 'rake/gempackagetask'
+require 'rspec/core/rake_task'
 
-namespace 'xor' do
-  desc "Build the XOR extension"
-  Rake::ExtensionTask.new :xor do |t|
-    t.dir = 'ext'
-  end
+gem = Gem::Specification.load( File.dirname(__FILE__) + '/fast_xor.gemspec' )
+Rake::ExtensionTask.new( 'xor', gem )
+
+Rake::GemPackageTask.new gem  do |pkg|
+  pkg.need_zip = pkg.need_tar = false
 end
 
-task :test => 'xor:xor'
-Rake::TestTask.new do |t|
-  t.libs << 'ext'
-  t.test_files = FileList['test/test_*.rb']
-  t.verbose = true
+RSpec::Core::RakeTask.new :spec  do |spec|
+  spec.pattern = 'spec/**/*_spec.rb'
 end
 
-task :all => ['xor:xor', :test]
-task :default => :all
+task :default => [:compile, :spec]
 
-Jeweler::Tasks.new do |g|
-  g.name = 'fast_xor'
-  g.summary = 'Fast String XOR operator'
-  g.description = 'Provides a C-optimized method for in-place XORing of two (or three) strings'
-  g.email = 'steve@finagle.org'
-  g.homepage = 'http://github.com/CodeMonkeySteve/fast_xor'
-  g.authors = ['Steve Sloan']
-
-  g.files = %w(
-    README.rdoc MIT-LICENSE
-    rake/extensiontask.rb
-    ext/xor.c
-    test/test_xor.rb
-    test/benchmark.rb
-  )
-  g.extensions = ['Rakefile']
-  g.require_paths = %w(ext)
-
-#  g.has_rdoc = true
-#  g.rdoc_options = %w| --line-numbers --inline-source --main README.rdoc |
-end
-Jeweler::GemcutterTasks.new

@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <ruby.h>
 
+/* Backward compatibility with Ruby 1.8 */
+#ifndef RSTRING_PTR
+#define RSTRING_PTR(s) (RSTRING(s)->ptr)
+#endif
+#ifndef RSTRING_LEN
+#define RSTRING_LEN(s) (RSTRING(s)->len)
+#endif
+
 VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
   const char *src = 0;
   char *dest = 0 ;
@@ -11,12 +19,12 @@ VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
     return Qnil;
   }
 
-  dest = STR2CSTR(self);
-  length = RSTRING(self)->len;
+  dest = RSTRING_PTR(self);
+  length = RSTRING_LEN(self);
 
   if ( TYPE(argv[0]) == T_STRING ) {
-    src = STR2CSTR(argv[0]);
-    size_t l = RSTRING(argv[0])->len;
+    src = RSTRING_PTR(argv[0]);
+    size_t l = RSTRING_LEN(argv[0]);
     if ( l < length )
       length = l;
   } else {
@@ -32,8 +40,8 @@ VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
     const char *src2 = 0;
 
     if ( TYPE(argv[1]) == T_STRING ) {
-      src2 = STR2CSTR(argv[1]);
-      size_t l = RSTRING(argv[1])->len;
+      src2 = RSTRING_PTR(argv[1]);
+      size_t l = RSTRING_LEN(argv[1]);
       if ( l < length )
         length = l;
     } else {

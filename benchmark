@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+$: << File.dirname(__FILE__)+'/lib'
+require 'benchmark'
+require 'xor'
+
+class String
+  def slow_xor!(other)
+    i = 0
+    other.each_byte.with_index { |b, i|  self[i] = (self[i].ord ^ b).chr  }
+  end
+
+ require 'xor'
+ alias_method :fast_xor!, :xor!
+end
+
+a = ([255].pack('C')) * (2**17)   # 128k
+b = a.dup
+n = (ARGV.first || 10).to_i
+
+Benchmark.bm  do |x|
+  x.report('Ruby     :') do  n.times { a.slow_xor! b }  end
+  x.report('C (x1000):') do  (n*1000).times { a.fast_xor! b }  end
+end
