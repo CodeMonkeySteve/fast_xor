@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
     'ext/xor/xor.c',
     'ext/xor/extconf.rb',
   ]
-  s.test_files = FileList['spec/**/*_spec.rb']
+  s.test_files = Dir['spec/**/*_spec.rb']
 
   s.extra_rdoc_files = ['README.rdoc']
   s.rdoc_options = ['--charset=UTF-8']
@@ -29,6 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rake'
   s.add_dependency 'rake-compiler'
 
-  s.add_development_dependency 'rspec', '~> 2.0.1'
+  s.add_development_dependency 'rspec'
 end
 

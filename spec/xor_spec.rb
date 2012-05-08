@@ -9,14 +9,14 @@ describe String do
     @invx = (0...@len).collect { |i| @x[i].ord ^ 0xFF }.pack('C*')
   end
 
-  it 'XORs two strings' do
+  it "two" do
     @x.dup.xor!(@x)   .should == @zero
     @x.dup.xor!(@invx).should == @one
     @x.dup.xor!(@zero).should == @x
     @x.dup.xor!(@one) .should == @invx
   end
 
-  it 'XORs three strings' do
+  it "three" do
     @x.dup.xor!(@x, @x)   .should == @x
     @x.dup.xor!(@x, @invx).should == @invx
     @x.dup.xor!(@x, @zero).should == @zero
