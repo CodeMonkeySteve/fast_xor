@@ -19,6 +19,7 @@ VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
     return Qnil;
   }
 
+  rb_str_modify(self);
   dest = RSTRING_PTR(self);
   length = RSTRING_LEN(self);
 

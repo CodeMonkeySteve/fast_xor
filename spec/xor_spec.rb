@@ -37,4 +37,29 @@ describe String do
     @x.dup.xor!(@one, @zero).should == @invx
     @x.dup.xor!(@one, @one) .should == @x
   end
+
+  it "shared" do
+    a = 'string'
+    b = a
+    b.xor!(@x)
+    b.should == a
+  end
+
+  it "embedded" do
+    a = 'an embedded string'
+    a.length.should <= 23
+
+    b = a.dup
+    b.xor!(@x)
+    b.should_not == a
+  end
+
+  it "heap" do
+    a = 'a very long string, stored on the heap'
+    a.length.should > 24
+
+    b = a.dup
+    b.xor!(@x*2)
+    b.should_not == a
+  end
 end
