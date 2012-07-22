@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'fast_xor'
-  s.version = '1.1.0'
-  s.date = '2010-10-29'
+  s.version = '1.1.1'
+  s.date = '2012-07-22'
   s.summary = 'Fast String XOR operator'
   s.description = 'Provides a C-optimized method for in-place XORing of two (or three) strings'
 
