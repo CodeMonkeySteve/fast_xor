@@ -24,8 +24,8 @@ VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
   length = RSTRING_LEN(self);
 
   if ( TYPE(argv[0]) == T_STRING ) {
-    src = RSTRING_PTR(argv[0]);
     size_t l = RSTRING_LEN(argv[0]);
+    src = RSTRING_PTR(argv[0]);
     if ( l < length )
       length = l;
   } else {
@@ -41,8 +41,8 @@ VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
     const char *src2 = 0;
 
     if ( TYPE(argv[1]) == T_STRING ) {
-      src2 = RSTRING_PTR(argv[1]);
       size_t l = RSTRING_LEN(argv[1]);
+      src2 = RSTRING_PTR(argv[1]);
       if ( l < length )
         length = l;
     } else {
