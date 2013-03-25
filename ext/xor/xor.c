@@ -11,8 +11,10 @@
 
 VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
   const char *src = 0;
+  const char *src2 = 0;
   char *dest = 0 ;
   size_t length = 0;
+  size_t l;
 
   if ( (argc < 1) || (argc > 2) ) {
     rb_raise( rb_eArgError, "wrong # of arguments(%d for 1 or 2)", argc );
@@ -24,7 +26,7 @@ VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
   length = RSTRING_LEN(self);
 
   if ( TYPE(argv[0]) == T_STRING ) {
-    size_t l = RSTRING_LEN(argv[0]);
+    l = RSTRING_LEN(argv[0]);
     src = RSTRING_PTR(argv[0]);
     if ( l < length )
       length = l;
@@ -38,10 +40,8 @@ VALUE string_xor( int argc, VALUE *argv, VALUE self ) {
       *dest ^= *src;
 
   } else {
-    const char *src2 = 0;
-
     if ( TYPE(argv[1]) == T_STRING ) {
-      size_t l = RSTRING_LEN(argv[1]);
+      l = RSTRING_LEN(argv[1]);
       src2 = RSTRING_PTR(argv[1]);
       if ( l < length )
         length = l;

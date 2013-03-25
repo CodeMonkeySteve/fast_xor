@@ -18,7 +18,7 @@
 
 == How fast is "Fast"?
 
-Almost 50,000x faster than pure Ruby, on my machine (your mileage my vary):
+Almost 50x faster than pure Ruby, on my machine (your mileage my vary):
 
   $ ./benchmark
               user       system     total      real
@@ -28,6 +28,6 @@ Almost 50,000x faster than pure Ruby, on my machine (your mileage my vary):
 
 Author::    Steve Sloan (mailto:steve@finagle.org)
 Website::   http://github.com/CodeMonkeySteve/fast_xor
-Copyright:: Copyright (c) 2009-2010 Steve Sloan
+Copyright:: Copyright (c) 2009-2013 Steve Sloan
 License::   MIT
 

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'fast_xor'
-  s.version = '1.1.1'
-  s.date = '2012-07-22'
+  s.version = '1.1.2'
+  s.date = '2013-03-22'
   s.summary = 'Fast String XOR operator'
   s.description = 'Provides a C-optimized method for in-place XORing of two (or three) strings'
 
@@ -10,11 +10,12 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/CodeMonkeySteve/fast_xor'
 
   s.extensions = ['ext/xor/extconf.rb']
-  s.require_paths = ['lib/fast_xor']
+  s.require_paths = ['lib']
   s.files = [
     'MIT-LICENSE',
     'README.rdoc',
     'benchmark',
+    'lib/.gemkeep',
     'ext/xor/xor.c',
     'ext/xor/extconf.rb',
   ]
