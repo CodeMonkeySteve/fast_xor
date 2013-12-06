@@ -31,5 +31,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'rake-compiler'
 
   s.add_development_dependency 'rspec'
+
+  s.rdoc_options = %w[
+    --exclude .*\.so
+  ]
 end
 
