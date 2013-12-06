@@ -18,12 +18,12 @@
 
 == How fast is "Fast"?
 
-Almost 50x faster than pure Ruby, on my machine (your mileage my vary):
+Over 5,000x faster than pure Ruby, on my machine (your mileage my vary):
 
   $ ./benchmark
-              user       system     total      real
-  Ruby     :  6.100000   0.010000   6.110000 (  6.307756)
-  C (x1000):  0.140000   0.000000   0.140000 (  0.144665)
+              user     system      total        real
+  Ruby     :  4.530000   0.000000   4.530000 (  4.535203)
+  C (x1000):  0.780000   0.000000   0.780000 (  0.781100)
 
 
 Author::    Steve Sloan (mailto:steve@finagle.org)
