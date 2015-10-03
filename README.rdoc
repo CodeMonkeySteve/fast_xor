@@ -1,4 +1,8 @@
-= String XOR Ruby Extension
+= THIS GEM IS DEPRECATED
+
+I recommend that you use the {xorcist}[https://github.com/fny/xorcist] gem instead, as it has more features and support.
+
+== String XOR Ruby Extension
 
 +fast_xor+ is a simple extension which provides fast in-place String XOR functions, suitable for cryptography.
 
